@@ -1,0 +1,29 @@
+{
+  "name": "cloud_service_status",
+  "version": "1.0.0",
+  "description": "Application to monitor and show services health. Application can register new services, check it's accesibility and show user friendly overview.",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "prepare": "husky"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/davidpapay/cloud_service_status.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/davidpapay/cloud_service_status/issues"
+  },
+  "homepage": "https://github.com/davidpapay/cloud_service_status#readme",
+  "devDependencies": {
+    "@commitlint/cli": "^20.1.0",
+    "@commitlint/config-conventional": "^20.0.0",
+    "husky": "^9.1.7"
+  }
+}

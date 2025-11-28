@@ -1,0 +1,9 @@
+#!/usr/bin/env sh
+
+# Husky commit-msg hook
+# This hook runs commitlint on every commit.
+# If the commit message does not follow the required format (Conventional Commits),
+# the commit is rejected and the user must fix the message.
+
+. "$(dirname -- "$0")/_/husky.sh"
+npx commitlint --edit "$1"

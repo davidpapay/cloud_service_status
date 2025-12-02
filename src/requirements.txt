@@ -1,0 +1,5 @@
+# FastAPI web framework for building the API
+fastapi
+
+# ASGI server
+uvicorn[standard]

@@ -1,0 +1,21 @@
+# Git metadata
+.git
+.gitignore
+
+# Python cache and virtual envs
+__pycache__/
+*.pyc
+.venv/
+venv/
+env/
+
+# Node tooling
+node_modules/
+
+# Docker files not needed in image
+Dockerfile
+.dockerignore
+
+# IDE / editor configs
+.vscode/
+.idea/

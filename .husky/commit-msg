@@ -5,4 +5,8 @@
 # If the commit message does not follow the required format (Conventional Commits),
 # the commit is rejected and the user must fix the message.
 
-npx commitlint --edit "$1"
+# npx commitlint checks the commit message
+# npx commitlint --edit "$1"
+
+# Validate commit message using commitlint (fast local version)
+./node_modules/.bin/commitlint --edit "$1"

@@ -1,2 +1,8 @@
 # directory needs to end with a slash
+
+# Ignore node modules
 node_modules/
+
+# Ignore Python cache files
+__pycache__/
+*.pyc

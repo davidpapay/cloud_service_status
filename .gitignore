@@ -6,3 +6,17 @@ node_modules/
 # Ignore Python cache files
 __pycache__/
 *.pyc
+
+# Terraform directory
+.terraform/
+
+# Terraform state files
+*.tfstate
+*.tfstate.backup
+
+# Crash logs
+crash.log
+crash.*.log
+
+# CLI configuration files
+.terraform.tfvars

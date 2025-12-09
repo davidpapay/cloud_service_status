@@ -1,5 +1,5 @@
 # Create Docker image in GHCR on push to main branch
-# Info: don't use inline comments in tags section. 
+# Info: don't use comments in tags section, always use comments above the section.
 
 name: Publish Docker image
 
@@ -35,8 +35,7 @@ jobs:
         with:
           context: .
           push: true
+          # add lastest tag and commit ID tag
           tags: |
-            # add lastest tag
             ghcr.io/${{ github.repository_owner }}/cloud_service_status:latest
-            # add commit ID tag
             ghcr.io/${{ github.repository_owner }}/cloud_service_status:${{ github.sha }}

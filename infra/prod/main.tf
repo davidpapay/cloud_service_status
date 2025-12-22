@@ -1,14 +1,14 @@
-# Main Terraform configuration file
+# Main Terraform configuration file - Production environment
 
 # Azure resource group
 resource "azurerm_resource_group" "cloud_service_status_rg" {
-  name     = "rg-cloud-service-status-dev"
+  name     = "rg-cloud-service-status-prod"
   location = "westeurope"
 }
 
 # Azure Container Registry
 resource "azurerm_container_registry" "cloud_service_status_acr" {
-  name                = "acrcloudservicestatusdev"
+  name                = "acrcloudservicestatusprod"
   resource_group_name = azurerm_resource_group.cloud_service_status_rg.name
   location            = azurerm_resource_group.cloud_service_status_rg.location
   sku                 = "Basic"

@@ -1,4 +1,4 @@
-# Main Terraform configuration file
+# Main Terraform configuration file - Development environment
 
 # Azure resource group
 resource "azurerm_resource_group" "cloud_service_status_rg" {

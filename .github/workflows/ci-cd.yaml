@@ -70,7 +70,7 @@ jobs:
           terraform -chdir=${{ env.DEV_DIR }} plan -out=tfplan-dev
 
       - name: Save Terraform plan (Dev)
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: tfplan-dev
           path: infra/dev/tfplan-dev
@@ -82,7 +82,7 @@ jobs:
           terraform -chdir=${{ env.PROD_DIR }} plan -out=tfplan-prod
 
       - name: Save Terraform plan (Prod)
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: tfplan-prod
           path: infra/prod/tfplan-prod
@@ -106,7 +106,7 @@ jobs:
           terraform_version: 1.14.0
 
       - name: Download Terraform plan (Dev)
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4
         with:
           name: tfplan-dev
           path: infra/dev/tfplan-dev
@@ -116,7 +116,7 @@ jobs:
           terraform -chdir=${{ env.DEV_DIR }} apply -auto-approve tfplan-dev
 
       - name: Download Terraform plan (Prod)
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4
         with:
           name: tfplan-prod
           path: infra/prod/tfplan-prod

@@ -113,6 +113,7 @@ jobs:
 
       - name: Terraform Apply (Dev)
         run: |
+          terraform -chdir=${{ env.DEV_DIR }} init
           terraform -chdir=${{ env.DEV_DIR }} apply -auto-approve tfplan-dev
 
       - name: Download Terraform plan (Prod)
@@ -123,4 +124,5 @@ jobs:
 
       - name: Terraform Apply (Prod)
         run: |
+          terraform -chdir=${{ env.PROD_DIR }} init
           terraform -chdir=${{ env.PROD_DIR }} apply -auto-approve tfplan-prod

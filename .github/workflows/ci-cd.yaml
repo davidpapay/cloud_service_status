@@ -66,11 +66,13 @@ jobs:
       - name: Terraform Init & Plan (Dev)
         run: |
           terraform -chdir=${{ env.DEV_DIR }} init
+          # use plan with -out to use exact plan without changes between plan and apply steps.
           terraform -chdir=${{ env.DEV_DIR }} plan -out=tfplan-dev
 
       - name: Terraform Init & Plan (Prod)
         run: |
           terraform -chdir=${{ env.PROD_DIR }} init
+          # use plan with -out to use exact plan without changes between plan and apply steps.
           terraform -chdir=${{ env.PROD_DIR }} plan -out=tfplan-prod
 
   terraform-apply:
@@ -79,8 +81,8 @@ jobs:
     steps:
       - name: Terraform Apply (Dev)
         run: |
-          terraform -chdir=${{ env.DEV_DIR }} show -no-color tfplan-dev
+          terraform -chdir=${{ env.DEV_DIR }} apply -auto-approve tfplan-dev
 
       - name: Terraform Apply (Prod)
         run: |
-          terraform -chdir=${{ env.PROD_DIR }} show -no-color tfplan-prod
+          terraform -chdir=${{ env.PROD_DIR }} apply -auto-approve tfplan-prod

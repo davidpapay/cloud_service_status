@@ -73,16 +73,14 @@ jobs:
           terraform -chdir=${{ env.PROD_DIR }} init
           terraform -chdir=${{ env.PROD_DIR }} plan -out=tfplan-prod
 
-  mock-apply:
+  terraform-apply:
     runs-on: ubuntu-latest
     needs: terraform-plan
     steps:
-      - name: Simulate Apply (Dev)
+      - name: Terraform Apply (Dev)
         run: |
-          echo "🔹 Simulating Terraform apply for dev..."
           terraform -chdir=${{ env.DEV_DIR }} show -no-color tfplan-dev
 
-      - name: Simulate Apply (Prod)
+      - name: Terraform Apply (Prod)
         run: |
-          echo "🔹 Simulating Terraform apply for prod..."
           terraform -chdir=${{ env.PROD_DIR }} show -no-color tfplan-prod

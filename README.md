@@ -1,17 +1,78 @@
 # Cloud Service Status
-Application to monitor and show services health.
-Application can register new services, check it's accesibility and show user friendly overview.
+A production-grade DevOps demonstration project that simulates an internal cloud service status platform. The focus of this repository is infrastructure, CI/CD, cloud automation, and observability, not just the application itself.
 
-## Architecture
-To be added
+## Project Purpose
+This project demonstrates how a modern DevOps engineer designs, builds, and operates scalable cloud systems using industry best practices.
+It simulates a real-world internal status/health platform used by engineering teams to:
+• Monitor service health
+• Expose readiness and liveness endpoints
+• Track deployed versions
+• Observe system behavior via metrics and logs
+The application is intentionally simple. The value is in the engineering around it.
 
-## Tech stack
-• Azure  
-• Terraform  
-• Docker  
-• GitHub Actions  
-• Python FastAPI 
-• Azure Monitor and Application Insights  
+## Architecture (High-level)
+Developer → GitHub → CI/CD → Azure → Observability
+
+Local Dev
+└─ Docker
+
+GitHub Actions
+├─ Build & push Docker image (GHCR)
+├─ Terraform plan (dev + prod)
+└─ Terraform apply (controlled)
+
+Azure
+├─ Resource Groups (dev / prod)
+├─ Azure Container Registry
+├─ Container runtime (future: AKS)
+└─ Azure Monitor & Application Insights
+
+## Tech Stack
+
+### Cloud & Infrastructure
+• Microsoft Azure
+• Terraform (IaC, remote state, dev/prod separation)
+
+### CI/CD
+• GitHub Actions
+• GitHub Container Registry (GHCR)
+• OIDC / Service Principal authentication
+
+### Containers
+• Docker
+
+### Application
+• Python
+• FastAPI
+
+### Observability
+• Azure Monitor
+• Application Insights
+
+## Application Features
+• /health – liveness probe
+• /ready – readiness probe
+• /version – deployed version visibility
+
+Designed to be:
+• Container-ready
+• Kubernetes-ready
+• Observable by default
+
+## CI/CD Pipeline
+The repository contains a production-style pipeline:
+1. Build & Push
+    • Docker image build
+    • Push to GHCR
+    • Image tagged by commit SHA
+2. Terraform Plan
+    • Separate dev and prod configurations
+    • Remote backend
+    • Artifact-based plan transfer
+3. Terraform Apply
+    • Uses pre-generated plan
+    • Authenticated via Azure Service Principal
+    • Fully automated, auditable flow
 
 ## Roadmap
 • MVP application  
@@ -22,20 +83,23 @@ To be added
 • Monitoring and alerting  
 • Kubernetes deployment (optional advanced stage)
 
-## Project goal
-This project simulates a real world internal status platform used in production environments.  
-It demonstrates DevOps practices such as IaC, CI CD, containerization, cloud deployment and observability.
-
-## Development standards
-This project follows professional DevOps practices including:
+## Development Standards
 
 ### Conventional Commits
-Commit messages follow the Conventional Commits specification
-(feat, fix, docs, chore, ci, refactor, etc.)
-to keep the git history clean and readable.
+All commits follow the Conventional Commits specification (feat, fix, ci, docs, chore, refactor, etc.) to ensure readable git history and support automation.
 
 ### Commitlint + Husky
-Commitlint validates every commit message.
-Husky runs Commitlint via a `commit-msg` hook, preventing invalid commits.
-This ensures consistent and professional commit messages across the project.
+• Commitlint validates commit messages
+• Husky enforces rules via git hooks
+Invalid commits are rejected automatically.
 
+## What This Project Demonstrates
+• Real-world DevOps workflows
+• Infrastructure as Code maturity
+• Secure cloud authentication patterns
+• CI/CD separation of concerns
+• Environment parity (dev / prod)
+• Observability-first mindset
+
+## Note
+The emphasis is on how systems are built and operated, not on application complexity.

@@ -1,6 +1,7 @@
 # Cloud Service Status
 A production-grade DevOps demonstration project that simulates an internal cloud service status platform. The focus of this repository is infrastructure, CI/CD, cloud automation, and observability, not just the application itself.
 
+
 ## Project Purpose
 This project demonstrates how a modern DevOps engineer designs, builds, and operates scalable cloud systems using industry best practices.
 It simulates a real-world internal status/health platform used by engineering teams to:
@@ -10,22 +11,27 @@ It simulates a real-world internal status/health platform used by engineering te
 • Observe system behavior via metrics and logs
 The application is intentionally simple. The value is in the engineering around it.
 
+
 ## Architecture (High-level)
-Developer → GitHub → CI/CD → Azure → Observability
 
-Local Dev
-└─ Docker
+### Development & CI/CD flow
+Developer
+→ GitHub repository  
+→ GitHub Actions  
+→ Docker image build & push (GHCR)  
+→ Terraform plan (dev / prod)  
+→ Terraform apply (controlled)
 
-GitHub Actions
-├─ Build & push Docker image (GHCR)
-├─ Terraform plan (dev + prod)
-└─ Terraform apply (controlled)
-
+### Runtime & Cloud
 Azure
-├─ Resource Groups (dev / prod)
-├─ Azure Container Registry
-├─ Container runtime (future: AKS)
-└─ Azure Monitor & Application Insights
+- Resource Groups (dev / prod)
+- Azure Container Registry
+- Container runtime (future: AKS)
+- Azure Monitor & Application Insights
+
+### Local development
+- Docker (local container run)
+
 
 ## Tech Stack
 
@@ -49,6 +55,7 @@ Azure
 • Azure Monitor
 • Application Insights
 
+
 ## Application Features
 • /health – liveness probe
 • /ready – readiness probe
@@ -58,6 +65,7 @@ Designed to be:
 • Container-ready
 • Kubernetes-ready
 • Observable by default
+
 
 ## CI/CD Pipeline
 The repository contains a production-style pipeline:
@@ -74,6 +82,7 @@ The repository contains a production-style pipeline:
     • Authenticated via Azure Service Principal
     • Fully automated, auditable flow
 
+
 ## Roadmap
 • MVP application  
 • Local development environment  
@@ -82,6 +91,7 @@ The repository contains a production-style pipeline:
 • CD pipeline  
 • Monitoring and alerting  
 • Kubernetes deployment (optional advanced stage)
+
 
 ## Development Standards
 
@@ -93,6 +103,7 @@ All commits follow the Conventional Commits specification (feat, fix, ci, docs, 
 • Husky enforces rules via git hooks
 Invalid commits are rejected automatically.
 
+
 ## What This Project Demonstrates
 • Real-world DevOps workflows
 • Infrastructure as Code maturity
@@ -100,6 +111,7 @@ Invalid commits are rejected automatically.
 • CI/CD separation of concerns
 • Environment parity (dev / prod)
 • Observability-first mindset
+
 
 ## Note
 The emphasis is on how systems are built and operated, not on application complexity.

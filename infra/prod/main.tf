@@ -6,12 +6,10 @@ resource "azurerm_resource_group" "cloud_service_status_rg" {
   location = "westeurope"
 }
 
-# Azure Container Registry
-resource "azurerm_container_registry" "cloud_service_status_acr" {
+# Azure Container Registry module instance
+module "cloud_service_status_acr" {
+  source              = "../modules/container_app"
   name                = "acrcloudservicestatusprod"
   resource_group_name = azurerm_resource_group.cloud_service_status_rg.name
   location            = azurerm_resource_group.cloud_service_status_rg.location
-  sku                 = "Basic"
-
-  admin_enabled       = true
 }

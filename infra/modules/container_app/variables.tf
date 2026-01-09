@@ -1,0 +1,5 @@
+# Variables for Container App Module
+
+variable "name" {}
+variable "resource_group_name" {}
+variable "location" {}

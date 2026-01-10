@@ -12,4 +12,5 @@ module "cloud_service_status_acr" {
   name                = "acrcloudservicestatusprod"
   resource_group_name = azurerm_resource_group.cloud_service_status_rg.name
   location            = azurerm_resource_group.cloud_service_status_rg.location
+  container_image     = "acrcloudservicestatusprod.azurecr.io/cloud-service-status:latest"
 }

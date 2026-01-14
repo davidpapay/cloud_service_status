@@ -22,12 +22,33 @@ resource "azurerm_container_app" "this" {
   container_app_environment_id = azurerm_container_app_environment.this.id
   revision_mode                = "Single"
 
+  # Container configuration
   template {
     container {
       name   = var.name
       image  = var.container_image
       cpu    = var.cpu
       memory = var.memory
+
+      # Environment variables
+      env {
+        name  = "PORT"
+        value = "8080"
+      }
+    }
+  }
+
+
+# Ingress(inbound network) configuration
+ ingress {
+    # Enable external access
+    external_enabled = true
+    target_port      = 8080
+
+    traffic_weight {
+      percentage      = 100
+      # Route all traffic to the latest revision
+      latest_revision = true
     }
   }
 }

@@ -29,12 +29,6 @@ resource "azurerm_container_app" "this" {
       image  = var.container_image
       cpu    = var.cpu
       memory = var.memory
-
-      # Environment variables
-      env {
-        name  = "PORT"
-        value = "8080"
-      }
     }
   }
 
@@ -43,7 +37,7 @@ resource "azurerm_container_app" "this" {
  ingress {
     # Enable external access
     external_enabled = true
-    target_port      = 8080
+    target_port      = 8000
 
     traffic_weight {
       percentage      = 100

@@ -14,6 +14,12 @@ variable "container_image" {
   description = "Docker image for the Container App"
 }
 
+variable "registry_server" {}
+variable "registry_username" {}
+variable "registry_password" {
+  sensitive = true
+}
+
 variable "cpu" {
   description = "CPU for container"
   default     = 0.25

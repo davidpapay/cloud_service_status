@@ -12,5 +12,5 @@ module "app" {
   name                = "cloud-service-status-dev"
   resource_group_name = azurerm_resource_group.this.name
   location            = azurerm_resource_group.this.location
-  container_image     = "acrcloudservicestatusdev.azurecr.io/cloud-service-status:latest"
+  container_image     = var.container_image
 }

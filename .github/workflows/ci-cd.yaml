@@ -40,9 +40,8 @@ jobs:
         with:
           context: .
           push: true
-          # add lastest tag and commit ID tag
+          # add commit ID tag
           tags: |
-            ghcr.io/${{ github.repository_owner }}/cloud_service_status:latest
             ghcr.io/${{ github.repository_owner }}/cloud_service_status:${{ github.sha }}
 
   terraform-plan:
@@ -64,9 +63,11 @@ jobs:
           terraform_version: 1.14.0
 
       - name: Terraform Init & Plan (Dev)
+      # use plan with -out to use exact plan without changes between plan and apply steps.
+        env:
+          TF_VAR_container_image: ghcr.io/${{ github.repository_owner }}/cloud_service_status:${{ github.sha }}
         run: |
           terraform -chdir=${{ env.DEV_DIR }} init
-          # use plan with -out to use exact plan without changes between plan and apply steps.
           terraform -chdir=${{ env.DEV_DIR }} plan -out=tfplan-dev
 
       - name: Save Terraform plan (Dev)

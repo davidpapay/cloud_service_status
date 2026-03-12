@@ -40,7 +40,10 @@ jobs:
         with:
           context: .
           push: true
-          # add commit ID tag
+          build-args: |
+            # pass the commit SHA as a build argument for versioning
+            APP_VERSION=${{ github.sha }}
+            # add commit ID tag
           tags: |
             ghcr.io/${{ github.repository_owner }}/cloud_service_status:${{ github.sha }}
 

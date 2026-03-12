@@ -1,6 +1,10 @@
 # Base image with Python runtime
 FROM python:3.11-slim
 
+# Set environment variables for CI/CD pipelines
+ARG APP_VERSION=dev
+ENV APP_VERSION=$APP_VERSION
+
 # Set working directory inside the container
 WORKDIR /app
 
